@@ -17,6 +17,7 @@ let button_multiply = document.querySelector('#button_multiply');
 let button_divide = document.querySelector('#button_divide');
 let button_ac = document.querySelector('#button_ac');
 let button_modulus = document.querySelector('#button_modulus');
+let button_plmi = document.querySelector('#button_plusminus');
 let current_operand = '';
 let number = 0;
 let counter = 0;
@@ -154,13 +155,13 @@ button_0.addEventListener('click', function() {
 
 /* TODO: Fix the dot expression to only allow for one dot in expression */
 
-// button_dot.addEventListener('click', function() {
-//     if(expression1.indexOf('.') > -1){
-//         console.log("a dot already exists.")
-//     } else {
-//         result_button.append('.');
-//     }
-// })
+button_dot.addEventListener('click', function() {
+    if(expression1.indexOf('.') > -1){
+        console.log("a dot already exists.")
+    } else {
+        result_button.append('.');
+    }
+})
 
 
 button_plus.addEventListener('click', function() {
@@ -206,6 +207,15 @@ button_modulus.addEventListener('click', function() {
     final_result = 0;
     counter = 0;
     current_operand = 'modulus';
+})
+
+button_plmi.addEventListener('click', function() {
+    if(expression1.charAt(0) != '-'){
+        result_button.innerText = "-" + result_button.innerText;
+        expression1 = "-" +  expression1;
+    } else {
+        console.log('something went wrong');
+    }
 })
 
 button_equals.addEventListener('click', function() {
