@@ -16,6 +16,7 @@ let button_minus = document.querySelector('#button_minus');
 let button_multiply = document.querySelector('#button_multiply');
 let button_divide = document.querySelector('#button_divide');
 let button_ac = document.querySelector('#button_ac');
+let button_modulus = document.querySelector('#button_modulus');
 let current_operand = '';
 let number = 0;
 let counter = 0;
@@ -39,7 +40,12 @@ button_ac.addEventListener('click', function() {
 
 button_1.addEventListener('click', function() {
     number = 1;
-    result_button.append(String(number));
+    if(result_button.innerText[0] === '0') {
+        result_button.innerText = (String(number)); 
+    } else {
+        result_button.append(String(number))
+    }
+    
     counter += number;
     expression1 += '1';
 
@@ -49,66 +55,112 @@ button_1.addEventListener('click', function() {
 
 button_2.addEventListener('click', function() {
     number = 2;
-    result_button.append(String(number));
+    if(result_button.innerText[0] === '0') {
+        result_button.innerText = (String(number)); 
+    } else {
+        result_button.append(String(number))
+    }
     counter += number;
     expression1 += '2';
 })
 
 button_3.addEventListener('click', function() {
     number = 3;
-    result_button.append(String(number));
+    if(result_button.innerText[0] === '0') {
+        result_button.innerText = (String(number)); 
+    } else {
+        result_button.append(String(number))
+    }
     counter += number;
     expression1 += '3';
 })
 
 button_4.addEventListener('click', function() {
     number = 4;
-    result_button.append(String(number));
+    if(result_button.innerText[0] === '0') {
+        result_button.innerText = (String(number)); 
+    } else {
+        result_button.append(String(number))
+    }
     counter += number;
     expression1 += '4';
 })
 
 button_5.addEventListener('click', function() {
     number = 5;
-    result_button.append(String(number));
+    if(result_button.innerText[0] === '0') {
+        result_button.innerText = (String(number)); 
+    } else {
+        result_button.append(String(number))
+    }
     counter += number;
     expression1 += '5';
 })
 
 button_6.addEventListener('click', function() {
     number = 6;
-    result_button.append(String(number));
+    if(result_button.innerText[0] === '0') {
+        result_button.innerText = (String(number)); 
+    } else {
+        result_button.append(String(number))
+    }
     counter += number;
     expression1 += '6';
 })
 
 button_7.addEventListener('click', function() {
     number = 7;
-    result_button.append(String(number));
+    if(result_button.innerText[0] === '0') {
+        result_button.innerText = (String(number)); 
+    } else {
+        result_button.append(String(number))
+    }
     counter += number;
     expression1 += '7';
 })
 
 button_8.addEventListener('click', function() {
     number = 8;
-    result_button.append(String(number));
+    if(result_button.innerText[0] === '0') {
+        result_button.innerText = (String(number)); 
+    } else {
+        result_button.append(String(number))
+    }
     counter += number;
     expression1 += '8';
 })
 
 button_9.addEventListener('click', function() {
     number = 9;
-    result_button.append(String(number));
+    if(result_button.innerText[0] === '0') {
+        result_button.innerText = (String(number)); 
+    } else {
+        result_button.append(String(number))
+    }
     counter += number;
     expression1 += '9';
 })
 
 button_0.addEventListener('click', function() {
     number = 0;
-    result_button.append(String(number));
+    if(result_button.innerText[0] === '0') {
+        result_button.innerText = (String(number)); 
+    } else {
+        result_button.append(String(number))
+    }
     counter += number;
     expression1 += '0';
 })
+
+/* TODO: Fix the dot expression to only allow for one dot in expression */
+
+// button_dot.addEventListener('click', function() {
+//     if(expression1.indexOf('.') > -1){
+//         console.log("a dot already exists.")
+//     } else {
+//         result_button.append('.');
+//     }
+// })
 
 
 button_plus.addEventListener('click', function() {
@@ -147,19 +199,26 @@ button_minus.addEventListener('click', function() {
     current_operand = 'minus';
 })
 
-
-
+button_modulus.addEventListener('click', function() {
+    expression2 = expression1.slice(0, expression1.length);
+    expression1 = '';
+    result_button.innerText = '0';
+    final_result = 0;
+    counter = 0;
+    current_operand = 'modulus';
+})
 
 button_equals.addEventListener('click', function() {
     if(current_operand === 'add'){
-        console.log(parseInt(expression2) + parseInt(expression1));
-        result_button.append(String(parseInt(expression2) + parseInt(expression1)));
+        result_button.innerText = (String(parseInt(expression2) + parseInt(expression1)));
     } else if (current_operand === 'divide') {
-        console.log(parseInt(expression2) / parseInt(expression1));
+        result_button.innerText = (String(parseInt(expression2) / parseInt(expression1)));
     } else if(current_operand === 'multiply') {
-        console.log(parseInt(expression2) * parseInt(expression1));
+        result_button.innerText = (String(parseInt(expression2) * parseInt(expression1)));
     } else if (current_operand === 'minus') {
-        console.log(parseInt(expression2) - parseInt(expression1));
+        result_button.innerText = (String(parseInt(expression2) - parseInt(expression1)));
+    } else if (current_operand === 'modulus') {
+        result_button.innerText = (String(parseInt(expression2) % parseInt(expression1)));
     } else {
         console.warn('Could not compute. Try again.');
     }
